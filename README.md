@@ -9,8 +9,8 @@ The TensorFlow Lite Model Maker library is a high-level library that simplifies 
 ### Install required packages
 
 ```
-pip install -q tflite-model-maker
-pip install -q pycocotools
+!pip install -q --use-deprecated=legacy-resolver tflite-model-maker
+!pip install -q pycocotools
 ```
 
 Import the required packages.
@@ -291,10 +291,10 @@ def detect_objects(interpreter, image, threshold):
   interpreter.invoke()
 
   # Get all outputs from the model
-  boxes = get_output_tensor(interpreter, 0)
-  classes = get_output_tensor(interpreter, 1)
-  scores = get_output_tensor(interpreter, 2)
-  count = int(get_output_tensor(interpreter, 3))
+  scores = get_output_tensor(interpreter, 0)
+  boxes = get_output_tensor(interpreter, 1)
+  count = int(get_output_tensor(interpreter, 2))
+  classes = get_output_tensor(interpreter, 3)
 
   results = []
   for i in range(count):
